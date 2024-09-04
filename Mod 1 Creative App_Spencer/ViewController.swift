@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var repsField: UITextField!
     
+    @IBOutlet weak var outputLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,9 +29,29 @@ class ViewController: UIViewController {
         var testPr = Int(pr) ?? 0
         var testReps = Int(reps) ?? 0
         
+        var max: Double
+        var mult: Double
+        
         if(testPr == 0 || testReps == 0){
-            //display error message
+            outputLabel.text = "Invalid input"
+            outputLabel.textColor = UIColor.systemRed
+            outputLabel.isHidden = false
+        } else {
+            mult = 1.0 + (Double((testReps - 1)) * 0.05)
+            max = Double(testPr) * mult
+            outputLabel.text = "Your max is \(max) lbs"
+            outputLabel.textColor = UIColor.black
+            outputLabel.isHidden = false
         }
+        
+    }
+    
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        
+        prField.text = ""
+        repsField.text = ""
+        outputLabel.isHidden = true
         
     }
     
