@@ -24,10 +24,10 @@ class ViewController: UIViewController {
 
     @IBAction func submitButton(_ sender: Any) {
         var pr = prField.text!
-        var reps = prField.text!
+        var reps = repsField.text!
         
-        var testPr = Int(pr) ?? 0
-        var testReps = Int(reps) ?? 0
+        var testPr = Double(pr) ?? 0
+        var testReps = Double(reps) ?? 0
         
         var max: Double
         var mult: Double
@@ -37,8 +37,8 @@ class ViewController: UIViewController {
             outputLabel.textColor = UIColor.systemRed
             outputLabel.isHidden = false
         } else {
-            mult = 1.0 + (Double((testReps - 1)) * 0.05)
-            max = Double(testPr) * mult
+            mult = 1.0 + ((testReps - 1) * 0.05)
+            max = testPr * mult
             outputLabel.text = "Your max is \(max) lbs"
             outputLabel.textColor = UIColor.black
             outputLabel.isHidden = false
